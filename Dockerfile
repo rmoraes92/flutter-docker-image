@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y \
 USER ubuntu
 WORKDIR /home/ubuntu
 
-ADD flutter_linux_3.29.2-stable.tar.xz sdk
+ADD ./flutter_linux_3.29.2-stable.tar.xz sdk
 RUN git config --global --add safe.directory /home/ubuntu/sdk/flutter
 
 # Set Flutter environment variables
