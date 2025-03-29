@@ -13,12 +13,7 @@ sdk_folder=flutter
 echo_git_release_version:
 	@echo $(git_release_version)
 
-foo=bar.txt
-
-assets/$(foo):
-	touch assets/bar.txt
-
-assets/:
+assets:
 	mkdir -p assets
 
 assets/$(sdk_archive): assets
