@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y \
 # Install Flutter SDK
 USER ubuntu
 WORKDIR /home/ubuntu
-COPY assets/flutter sdk
-RUN git config --global --add safe.directory /home/ubuntu/sdk/flutter
-ENV PATH="/home/ubuntu/sdk/flutter/bin:/home/ubuntu/sdk/flutter/bin/cache/dart-sdk/bin:${PATH}"
-RUN flutter --version
+COPY --chown=ubuntu assets/flutter flutter
+RUN git config --global --add safe.directory /home/ubuntu/flutter
+ENV PATH=/home/ubuntu/flutter/bin:/home/ubuntu/flutter/.cache/bin:${PATH}
+RUN flutter --disable-analytics
 CMD ["flutter"]
