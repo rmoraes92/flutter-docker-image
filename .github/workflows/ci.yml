@@ -6,6 +6,7 @@ on:
 
 env:
   FOO: bar
+  BASE_URL_LNX_SDK: https://storage.googleapis.com/flutter_infra_release/releases/stable/linux
 
 jobs:
   build:
@@ -15,12 +16,18 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      - name: Install
+      - name: Install Base Packages
         run: sudo apt-get update && sudo apt-get install -y curl
 
-      - name: Run tests
+      - name: Download Flutter SDK
         run: |
-          curl -O https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.29.2-stable.tar.xz
+          curl -O $BASE_URL_LNX_SDK/flutter_linux_3.29.2-stable.tar.xz
+          pwd
+          ls -ghua
+
+      - name: Extracting Flutter SDK
+        run: |
+          tar xf flutter_linux_3.29.2-stable.tar.xz
           ls -ghua
 
       - name: Login to Docker Hub
