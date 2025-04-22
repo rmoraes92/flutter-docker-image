@@ -18,7 +18,7 @@ assets:
 
 assets/$(sdk_archive): assets
 	cd assets && curl -O $(base_url_lnx_sdk)/$(sdk_archive)
-	touch $(base_url_lnx_sdk)/$(sdk_archive)
+	touch $(sdk_archive)
 
 assets/flutter: assets/$(sdk_archive)
 	tar xf assets/$(sdk_archive) -C assets/
